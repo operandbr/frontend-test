@@ -7,7 +7,7 @@ Segue abaixo orientações esta etapa do processo de seleção:
 
 ## 🍴 Fazer um Fork deste projeto
 
-## ⚙️ Criar um projeto (CRUD) utilizando Vue Cli com as seguintes configurações
+## ⚙️ Criar um projeto utilizando Vue Cli com as seguintes configurações
 * Vue 2.x
 * Babel
 * Router
@@ -24,8 +24,8 @@ Segue abaixo orientações esta etapa do processo de seleção:
     * Dedicated config files
 
 ## 🧾 Detalhes do projeto
-* Para o projeto você pode utilizar um framework ou criar seus próprios componentes e estilos.
-* Você deve utilizar o git para versionar o código.
+* Para o projeto você pode utilizar um framework ou criar seus próprios componentes e estilos
+* Crie um CRUD de usuários
 
 ## 🤯 Diferenciais
 * Persistência dos dados (Firebase, Localstorage) fica a sua escolha
