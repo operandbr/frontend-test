@@ -3,7 +3,7 @@
 ## 💻 Hello Dev
 Para você que está participando do processo de seleção para a vaga Desenvolvedor Front-end, ou apenas quer deixar seu projeto em nossa base para futuras vagas.
 
-Segue abaixo orientações esta etapa do processo de seleção:
+Segue abaixo orientações para esta etapa do processo de seleção:
 
 ## 🍴 Fazer um Fork deste projeto
 
