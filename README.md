@@ -1,7 +1,7 @@
 # Teste Frontend
 
 ## 💻 Hello Dev
-Para você que está participando do processo de seleção para a vaga Desenvolvedor Front-end, ou apenas quer deixar seu projeto em nossa base para futuras vagas.
+Para você que está participando do processo de seleção para a vaga de Desenvolvedor(a) Front-end, ou apenas quer deixar seu projeto em nossa base para futuras vagas.
 
 Segue abaixo orientações esta etapa do processo de seleção:
 
@@ -33,7 +33,7 @@ Segue abaixo orientações esta etapa do processo de seleção:
 * Organização nos commits
 * Componentização dos elementos (que podem ser reutilizados)
 * Clean Code
-* Identação / Organização nos códigos e templates
+* Indentação / Organização nos códigos e templates
 * README organizado e detalhado
 
 ## 📨 Fazer um PR (Pull Request) com o código finalizado
