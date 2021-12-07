@@ -1,8 +1,13 @@
 # Teste Frontend
 
-## Fazer um Fork deste projeto
+## 💻 Hello Dev
+Para você que está participando do processo de seleção para a vaga Desenvolvedor Front-end, ou apenas quer deixar seu projeto em nossa base para futuras vagas.
 
-## Criar um projeto (CRUD) utilizando Vue Cli com as seguintes opções
+Segue abaixo orientações esta etapa do processo de seleção:
+
+## 🍴 Fazer um Fork deste projeto
+
+## ⚙️ Criar um projeto (CRUD) utilizando Vue Cli com as seguintes configurações
 * Vue 2.x
 * Babel
 * Router
@@ -18,11 +23,11 @@
 * Config files
     * Dedicated config files
 
-## Detalhes do projeto
+## 🧾 Detalhes do projeto
 * Para o projeto você pode utilizar um framework ou criar seus próprios componentes e estilos.
 * Você deve utilizar o git para versionar o código.
 
-## Diferenciais
+## 🤯 Diferenciais
 * Persistência dos dados (Firebase, Localstorage) fica a sua escolha
 * Hospedagem da aplicação em algum serviço gratuito
 * Organização nos commits
@@ -31,4 +36,4 @@
 * Identação / Organização nos códigos e templates
 * README organizado e detalhado
 
-## Fazer um PR (Pull Request) com o código finalizado
+## 📨 Fazer um PR (Pull Request) com o código finalizado
