@@ -28,7 +28,7 @@ Segue abaixo orientações para esta etapa do processo de seleção:
 * Crie um CRUD de usuários
 
 ## 🤯 Diferenciais
-* Persistência dos dados (Firebase, Localstorage) fica a sua escolha
+* Persistência dos dados (Firebase, Localstorage)
 * Hospedagem da aplicação em algum serviço gratuito
 * Organização nos commits
 * Componentização dos elementos (que podem ser reutilizados)
