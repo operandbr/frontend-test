@@ -1,39 +1,21 @@
 # Teste Frontend
 
-## 💻 Hello Dev
-Para você que está participando do processo de seleção para a vaga de Desenvolvedor(a) Front-end, ou apenas quer deixar seu projeto em nossa base para futuras vagas.
+## 💻 Sobre o Projeto
 
-Segue abaixo orientações para esta etapa do processo de seleção:
+Desenvolvimento de um simples CRUD (listagem, cadastro, edição e exclusão) de Usuários com sistema de autenticação básico
+(Login, Register, Logout).
 
-## 🍴 Fazer um Fork deste projeto
+Persistência dos usuarios através do Firestore.
+Persistência da sessão através do LocalStorage (vuex-persistedstate).
 
-## ⚙️ Criar um projeto utilizando Vue Cli com as seguintes configurações
-* Vue 2.x
-* Babel
-* Router
-* Vuex
-* CSS Pre-processors, Linter
-* Vue Router
-    * History Mode
-* CSS Pre-processors
-    * Sass/Scss (with node-sass)
-* Linter
-    * Stardand config
-    * Lint on save
-* Config files
-    * Dedicated config files
+Framework escolhido para realizar o teste: Vuetify
 
-## 🧾 Detalhes do projeto
-* Para o projeto você pode utilizar um framework ou criar seus próprios componentes e estilos
-* Crie um CRUD de usuários
+## 💻 Como rodar o projeto?
 
-## 🤯 Diferenciais
-* Persistência dos dados (Firebase, Localstorage)
-* Hospedagem da aplicação em algum serviço gratuito
-* Organização nos commits
-* Componentização dos elementos (que podem ser reutilizados)
-* Clean Code
-* Indentação / Organização nos códigos e templates
-* README organizado e detalhado
+Apenas rodar o comando "yarn" ou "npm install".
 
-## 📨 Fazer um PR (Pull Request) com o código finalizado
+Logo após "yarn serve" ou "npm run serve".
+
+## 💻 Acessando o projeto em deploy
+
+https://stoic-bassi-6677e2.netlify.app/
