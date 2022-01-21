@@ -1,5 +1,20 @@
 import axios from 'axios'
 
+const getUsers = async function ({ commit }) {
+  this.dispatch('Spinner/setSpinner', true)
+
+  await axios
+    .get(`http://localhost:8000/api/user`)
+    .then((res) => {
+      commit('SET_USERS', res.data)
+      return res.data
+    })
+    .catch((e) => {})
+    .finally(() => {
+      this.dispatch('Spinner/setSpinner', false)
+    })
+}
+
 const registerUser = async function ({ commit }, newData) {
   this.dispatch('Spinner/setSpinner', true)
 
@@ -58,7 +73,7 @@ const updateUser = async function ({ commit }, data) {
     })
 }
 
-const deleteUser = async function (id) {
+const deleteUser = async function ({ commit }, id) {
   this.dispatch('Spinner/setSpinner', true)
 
   await axios
@@ -66,14 +81,29 @@ const deleteUser = async function (id) {
     .then((res) => {
       return res.data
     })
-    .catch((e) => {})
+    .catch((e) => {
+      commit(
+        'SET_REMOVEERROR',
+        `${e.response.status}: ${e.response.data.message} Erro no servidor.`
+      )
+    })
     .finally(() => {
       this.dispatch('Spinner/setSpinner', false)
     })
 }
 
+const clearUsers = function ({ commit }) {
+  this.dispatch('Spinner/setSpinner', true)
+
+  commit('SET_USERS', null)
+
+  this.dispatch('Spinner/setSpinner', false)
+}
+
 export default {
+  getUsers,
   registerUser,
   updateUser,
   deleteUser,
+  clearUsers,
 }

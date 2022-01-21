@@ -1,12 +1,8 @@
 export default {
-  data: {
-    name: '',
-    email: '',
-    password: '',
-  },
+  users: null,
   error: {
-    register: '',
-    update: '',
-    delete: '',
+    register: null,
+    update: null,
+    delete: null,
   },
 }

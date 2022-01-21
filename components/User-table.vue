@@ -1,42 +1,41 @@
 <template>
-  <v-data-table :headers="headers" :items="users" item-key="id">
+<div>
+  <v-data-table v-if="users" :headers="headers" :items="users" item-key="id">
     <template #[`item.update`]="{ item }">
       <update-form :row-data="item" />
     </template>
     <template #[`item.delete`]="{ item }">
       <delete-form :row-data="item" />
     </template>
+    </span>
   </v-data-table>
+  <v-data-table v-else :headers="emptyHeader" :items="alert" item-key="text">
+     <template #[`item.alert`]="{ item }">
+      <v-alert style="margin-top: 15px" icon="mdi-alert" dense prominent outlined type="primary" :value="true">
+        {{item.text}}
+      </v-alert>
+    </template>
+    </v-data-table>
+    </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import UpdateForm from '../components/forms/Update-form.vue'
 import DeleteForm from '../components/forms/Delete-form.vue'
 export default {
   components: { UpdateForm, DeleteForm },
   data() {
     return {
-      users: [
+      alert: [
         {
-          id: 0,
-          name: 'Teste',
-          email: 'teste@teste.com.br',
-          password: 'teste123',
-          created_at: '2022-01-20',
-          updated_at: '2022-01-20',
-        },
-        {
-          id: 1,
-          name: 'João',
-          email: 'joao@teste.com.br',
-          password: 'teste432',
-          created_at: '2022-01-20',
-          updated_at: '2022-01-20',
-        },
-      ],
+          text: "Nenhum usuário cadastrado!"
+        }
+      ]
     }
   },
   computed: {
+    ...mapState('User', ['users']),
     headers() {
       return [
         {
@@ -65,6 +64,20 @@ export default {
         },
       ]
     },
+    emptyHeader() {
+      return [
+        {
+          value: 'alert',
+          sortable: false,
+        }
+      ]
+    }
+  },
+  mounted() {
+    this.getUsers()
+  },
+  methods: {
+    ...mapActions('User', ['getUsers', 'clearUsers']),
   },
 }
 </script>
