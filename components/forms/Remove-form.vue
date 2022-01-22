@@ -1,15 +1,17 @@
 <template>
   <v-dialog v-model="removeDialog" width="500">
     <template #activator="{ on, attrs }">
-      <v-btn color="red" v-bind="attrs" v-on="on">Remover</v-btn>
+      <v-btn text color="red" v-bind="attrs" v-on="on">Remover</v-btn>
     </template>
     <v-card>
       <v-container>
-        <h2 class="red--text">Tem certeza que deseja remover o usuário?</h2>
-        <small class="red--text"
-          >Digite "{{ rowData.name }}" para remover o usuário.</small
-        >
-        <v-text-field v-model="removeConfirm" error dense hide-details />
+        <v-form ref="form" lazy-validation>
+          <h2 class="red--text">Tem certeza que deseja remover o usuário?</h2>
+          <small class="red--text"
+            >Digite "{{ rowData.name }}" para remover o usuário.</small
+          >
+          <v-text-field v-model="removeConfirm" error dense hide-details />
+        </v-form>
       </v-container>
       <v-toolbar>
         <v-toolbar-items>
@@ -44,6 +46,13 @@ export default {
       removeDialog: false,
       removeConfirm: null,
     }
+  },
+  watch: {
+    removeDialog() {
+      if (this.removeDialog === false) {
+        this.$refs.form.resetValidation()
+      }
+    },
   },
   methods: {
     ...mapActions('User', ['removeUser']),

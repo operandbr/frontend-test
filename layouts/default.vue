@@ -3,7 +3,7 @@
     <default-header />
     <v-main>
       <spinner-loader v-if="spinner" />
-      <v-container>
+      <v-container fluid>
         <Nuxt />
       </v-container>
     </v-main>

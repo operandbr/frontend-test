@@ -4,7 +4,7 @@
       <v-col align="center">
         <v-dialog v-model="updateDialog" width="500">
           <template #activator="{ on, attrs }">
-            <v-btn color="yellow darken-1" v-bind="attrs" v-on="on">
+            <v-btn text color="yellow darken-1" v-bind="attrs" v-on="on">
               Editar
             </v-btn>
           </template>
@@ -15,32 +15,34 @@
               <v-spacer />
             </v-toolbar>
             <v-container class="py-5">
-              <v-text-field
-                v-model="$props.rowData.email"
-                label="Email"
-                :rules="[rules.required, rules.email]"
-              >
-                <template #prepend>
-                  <v-icon>mdi-email</v-icon>
-                </template>
-              </v-text-field>
-              <br />
-              <v-text-field
-                v-model="$props.rowData.password"
-                label="Senha"
-                :type="passwordType"
-                :rules="[rules.required]"
-              >
-                <template #prepend>
-                  <v-icon>mdi-key</v-icon>
-                </template>
-                <template #append>
-                  <v-icon @click="setPasswordType()">
-                    {{ passwordIcon }}
-                  </v-icon>
-                </template>
-              </v-text-field>
-              <br />
+              <v-form ref="form" lazy-validation>
+                <v-text-field
+                  v-model="$props.rowData.email"
+                  label="Email"
+                  :rules="[rules.required, rules.email]"
+                >
+                  <template #prepend>
+                    <v-icon>mdi-email</v-icon>
+                  </template>
+                </v-text-field>
+                <br />
+                <v-text-field
+                  v-model="$props.rowData.password"
+                  label="Senha"
+                  :type="passwordType"
+                  :rules="[rules.required]"
+                >
+                  <template #prepend>
+                    <v-icon>mdi-key</v-icon>
+                  </template>
+                  <template #append>
+                    <v-icon @click="setPasswordType()">
+                      {{ passwordIcon }}
+                    </v-icon>
+                  </template>
+                </v-text-field>
+                <br />
+              </v-form>
             </v-container>
             <v-toolbar>
               <v-toolbar-items>
@@ -88,6 +90,11 @@ export default {
     }
   },
   watch: {
+    updateDialog() {
+      if (this.updateDialog === false) {
+        this.$refs.form.resetValidation()
+      }
+    },
     'rowData.email'() {
       this.$props.rowData.email = this.rowData.email.toLowerCase()
     },

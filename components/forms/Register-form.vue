@@ -15,42 +15,66 @@
               <v-spacer />
             </v-toolbar>
             <v-container class="py-5">
-              <v-text-field
-                v-model="newData.name"
-                label="Nome"
-                :rules="[rules.required, rules.counter]"
-              >
-                <template #prepend>
-                  <v-icon>mdi-badge-account-horizontal</v-icon>
-                </template>
-              </v-text-field>
-              <br />
-              <v-text-field
-                v-model="newData.email"
-                label="Email"
-                :rules="[rules.required, rules.email]"
-              >
-                <template #prepend>
-                  <v-icon>mdi-email</v-icon>
-                </template>
-              </v-text-field>
-              <br />
-              <v-text-field
-                v-model="newData.password"
-                label="Senha"
-                :type="passwordType"
-                :rules="[rules.required]"
-              >
-                <template #prepend>
-                  <v-icon>mdi-key</v-icon>
-                </template>
-                <template #append>
-                  <v-icon @click="setPasswordType()">
-                    {{ passwordIcon }}
-                  </v-icon>
-                </template>
-              </v-text-field>
-              <br />
+              <v-form ref="form" lazy-validation>
+                <v-text-field
+                  v-model="newData.name"
+                  label="Nome"
+                  :rules="[rules.required, rules.counter]"
+                  @keyup.enter="checkAndRegister()"
+                >
+                  <template #prepend>
+                    <v-icon>mdi-badge-account-horizontal</v-icon>
+                  </template>
+                </v-text-field>
+                <br />
+                <v-text-field
+                  v-model="newData.email"
+                  label="Email"
+                  :rules="[rules.required, rules.email]"
+                  @keyup.enter="checkAndRegister()"
+                >
+                  <template #prepend>
+                    <v-icon>mdi-email</v-icon>
+                  </template>
+                </v-text-field>
+                <br />
+                <v-text-field
+                  v-model="newData.password"
+                  label="Senha"
+                  :type="passwordType"
+                  :rules="[rules.required]"
+                  @keyup.enter="checkAndRegister()"
+                >
+                  <template #prepend>
+                    <v-icon>mdi-key</v-icon>
+                  </template>
+                  <template #append>
+                    <v-icon @click="setPasswordType()">
+                      {{ passwordIcon }}
+                    </v-icon>
+                  </template>
+                </v-text-field>
+                <br />
+                <v-text-field
+                  v-model="passwordConfirmation"
+                  label="Password Confirmation"
+                  type="password"
+                  :rules="[rules.required, rules.matchingPassword]"
+                  @keyup.enter="checkAndRegister()"
+                >
+                  <template #prepend>
+                    <v-icon>mdi-lastpass</v-icon>
+                  </template>
+                </v-text-field>
+                <br />
+                <v-row v-if="registerError" justify="center">
+                  <v-col cols="9">
+                    <v-alert outlined type="error">
+                      {{ registerError }}
+                    </v-alert>
+                  </v-col>
+                </v-row>
+              </v-form>
             </v-container>
             <v-toolbar>
               <v-toolbar-items>
@@ -58,11 +82,7 @@
               </v-toolbar-items>
               <v-spacer />
               <v-toolbar-items>
-                <v-btn
-                  text
-                  @click="registerUser(newData), (registerDialog = false)"
-                  >Cadastrar</v-btn
-                >
+                <v-btn text @click="checkAndRegister()">Cadastrar</v-btn>
               </v-toolbar-items>
             </v-toolbar>
           </v-card>
@@ -85,6 +105,13 @@ export default {
         password: '',
       },
 
+      registerError: null,
+
+      passwordConfirmation: null,
+
+      passwordMatches: false,
+      isEmailValid: false,
+
       passwordType: 'password',
       passwordIcon: 'mdi-eye-off',
 
@@ -96,6 +123,9 @@ export default {
             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
           return pattern.test(value) || 'Email inválido.'
         },
+        matchingPassword: (value) =>
+          value === this.newData.password ||
+          'Confirmação de senha não confere.',
       },
     }
   },
@@ -103,12 +133,44 @@ export default {
     ...mapState('User', ['data']),
   },
   watch: {
+    registerDialog() {
+      if (this.registerDialog === false) {
+        this.$refs.form.resetValidation()
+        this.newData = {
+          name: '',
+          email: '',
+          password: '',
+        }
+      }
+    },
+    passwordConfirmation() {
+      if (this.rules.matchingPassword(this.passwordConfirmation) === true) {
+        this.passwordMatches = true
+      } else {
+        this.passwordMatches = false
+      }
+    },
     'newData.email'() {
       this.newData.email = this.newData.email.toLowerCase()
+      if (this.rules.email(this.newData.email) === true) {
+        this.isEmailValid = true
+      } else {
+        this.isEmailValid = false
+      }
     },
   },
   methods: {
     ...mapActions('User', ['registerUser']),
+    checkAndRegister() {
+      if (this.passwordMatches && this.isEmailValid) {
+        this.registerError = ''
+        this.register(this.newData)
+        this.registerDialog = false
+      } else {
+        this.registerError =
+          'Email inválido ou confirmação de senha não confere.'
+      }
+    },
     setPasswordType() {
       switch (this.passwordType) {
         case 'password':

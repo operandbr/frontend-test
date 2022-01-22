@@ -5,7 +5,7 @@
       <update-form :row-data="item" />
     </template>
     <template #[`item.delete`]="{ item }">
-      <delete-form :row-data="item" />
+      <remove-form :row-data="item" />
     </template>
     </span>
   </v-data-table>
@@ -22,9 +22,9 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import UpdateForm from '../components/forms/Update-form.vue'
-import DeleteForm from '../components/forms/Delete-form.vue'
+import RemoveForm from '../components/forms/Remove-form.vue'
 export default {
-  components: { UpdateForm, DeleteForm },
+  components: { UpdateForm, RemoveForm },
   data() {
     return {
       alert: [
