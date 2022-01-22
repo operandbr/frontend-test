@@ -5,13 +5,12 @@
       <v-spacer />
       <v-switch
         v-model="$vuetify.theme.dark"
+        class="dark-mode-switch"
         inset
         hide-details
         prepend-icon="mdi-white-balance-sunny"
         append-icon="mdi-moon-waning-crescent"
       ></v-switch>
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      <v-spacer />
     </v-app-bar>
   </div>
 </template>
@@ -22,8 +21,21 @@ export default {
     return {
       drawer: false,
       rightDrawer: false,
-      title: 'User CRUD',
+      title: 'Operand CRUD',
     }
   },
 }
 </script>
+
+<style>
+.dark-mode-switch
+  > .v-input__control
+  > .v-input__slot
+  > .v-input--selection-controls__input {
+  margin-right: 0 !important;
+}
+
+.dark-mode-switch > .v-input__append-outer {
+  margin-left: 0 !important;
+}
+</style>

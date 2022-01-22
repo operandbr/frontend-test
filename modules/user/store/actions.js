@@ -74,6 +74,36 @@ const updateUser = async function ({ commit }, data) {
     })
 }
 
+const updatePassword = async function ({ commit }, data) {
+  this.dispatch('Spinner/setSpinner', true)
+
+  await axios
+    .patch(`http://localhost:8000/api/user/` + data.id, {
+      password: data.password,
+    })
+    .then((res) => {
+      commit('SET_USERERROR', '')
+      return res.data
+    })
+    .catch((e) => {
+      if (e.response.status === 500) {
+        commit(
+          'SET_USERERROR',
+          `${e.response.status}: Algum campo foi deixado em branco.`
+        )
+      } else {
+        commit(
+          'SET_USERERROR',
+          `${e.response.status}: ${e.response.data.message} Erro no servidor.`
+        )
+      }
+    })
+    .finally(() => {
+      this.dispatch('User/getUsers')
+      this.dispatch('Spinner/setSpinner', false)
+    })
+}
+
 const removeUser = async function ({ commit }, id) {
   this.dispatch('Spinner/setSpinner', true)
 
@@ -103,6 +133,7 @@ export default {
   getUsers,
   registerUser,
   updateUser,
+  updatePassword,
   removeUser,
   clearUsers,
 }

@@ -1,10 +1,8 @@
 <template>
 <div>
   <v-data-table v-if="users" :headers="headers" :items="users" item-key="id">
-    <template #[`item.update`]="{ item }">
+    <template #[`item.control`]="{ item }">
       <update-form :row-data="item" />
-    </template>
-    <template #[`item.delete`]="{ item }">
       <remove-form :row-data="item" />
     </template>
     </span>
@@ -21,8 +19,8 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import UpdateForm from '../components/forms/Update-form.vue'
-import RemoveForm from '../components/forms/Remove-form.vue'
+import UpdateForm from '@/components/forms/Update-form.vue'
+import RemoveForm from '@/components/forms/Remove-form.vue'
 export default {
   components: { UpdateForm, RemoveForm },
   data() {
@@ -55,11 +53,7 @@ export default {
           value: 'updated_at',
         },
         {
-          value: 'update',
-          sortable: false,
-        },
-        {
-          value: 'delete',
+          value: 'control',
           sortable: false,
         },
       ]

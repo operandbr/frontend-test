@@ -2,48 +2,24 @@
   <v-container grid-list-xs>
     <v-row justify="center">
       <v-col align="center">
-        <v-dialog v-model="registerDialog" width="500">
+        <v-dialog v-model="passwordDialog" width="500">
           <template #activator="{ on, attrs }">
-            <v-btn fab v-bind="attrs" v-on="on">
-              <v-icon>mdi-plus</v-icon>
-            </v-btn>
+            <a v-bind="attrs" v-on="on"> Alterar senha </a>
           </template>
           <v-card>
             <v-toolbar>
               <v-spacer />
-              <v-toolbar-title>Registrar Cadastro</v-toolbar-title>
+              <v-toolbar-title>Alterar Senha</v-toolbar-title>
               <v-spacer />
             </v-toolbar>
             <v-container class="py-5">
               <v-form ref="form" lazy-validation>
                 <v-text-field
-                  v-model="newData.name"
-                  label="Nome"
-                  :rules="[rules.required, rules.counter]"
-                  @keyup.enter="checkAndRegister()"
-                >
-                  <template #prepend>
-                    <v-icon>mdi-badge-account-horizontal</v-icon>
-                  </template>
-                </v-text-field>
-                <br />
-                <v-text-field
-                  v-model="newData.email"
-                  label="Email"
-                  :rules="[rules.required, rules.email]"
-                  @keyup.enter="checkAndRegister()"
-                >
-                  <template #prepend>
-                    <v-icon>mdi-email</v-icon>
-                  </template>
-                </v-text-field>
-                <br />
-                <v-text-field
-                  v-model="newData.password"
-                  label="Senha"
+                  v-model="$props.rowData.password"
+                  label="Nova senha"
                   :type="passwordType"
                   :rules="[rules.required]"
-                  @keyup.enter="checkAndRegister()"
+                  @keyup.enter="checkAndUpdate()"
                 >
                   <template #prepend>
                     <v-icon>mdi-key</v-icon>
@@ -60,17 +36,17 @@
                   label="Confirmar senha"
                   type="password"
                   :rules="[rules.required, rules.matchingPassword]"
-                  @keyup.enter="checkAndRegister()"
+                  @keyup.enter="checkAndUpdate()"
                 >
                   <template #prepend>
                     <v-icon>mdi-lastpass</v-icon>
                   </template>
                 </v-text-field>
                 <br />
-                <v-row v-if="registerError" justify="center">
+                <v-row v-if="passwordError" justify="center">
                   <v-col cols="9">
                     <v-alert outlined type="error">
-                      {{ registerError }}
+                      {{ passwordError }}
                     </v-alert>
                   </v-col>
                 </v-row>
@@ -78,11 +54,13 @@
             </v-container>
             <v-toolbar>
               <v-toolbar-items>
-                <v-btn text @click="registerDialog = false">Cancelar</v-btn>
+                <v-btn text @click="passwordDialog = false">Cancelar</v-btn>
               </v-toolbar-items>
               <v-spacer />
               <v-toolbar-items>
-                <v-btn text @click="checkAndRegister()">Cadastrar</v-btn>
+                <v-btn text @click="checkAndUpdate(), (passwordDialog = false)"
+                  >Alterar</v-btn
+                >
               </v-toolbar-items>
             </v-toolbar>
           </v-card>
@@ -93,24 +71,25 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
+  props: {
+    rowData: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
     return {
-      registerDialog: false,
+      passwordDialog: false,
 
-      newData: {
-        name: '',
-        email: '',
-        password: '',
-      },
+      newPassword: null,
 
-      registerError: null,
+      passwordError: null,
 
       passwordConfirmation: null,
 
       passwordMatches: false,
-      isEmailValid: false,
 
       passwordType: 'password',
       passwordIcon: 'mdi-eye-off',
@@ -123,52 +102,31 @@ export default {
             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
           return pattern.test(value) || 'Email inválido.'
         },
-        matchingPassword: (value) =>
-          value === this.newData.password ||
-          'Confirmação de senha não confere.',
       },
     }
   },
-  computed: {
-    ...mapState('User', ['data']),
-  },
   watch: {
-    registerDialog() {
-      if (this.registerDialog === false) {
+    passwordDialog() {
+      if (this.passwordDialog === false) {
         this.$refs.form.resetValidation()
-        this.newData = {
+        this.$props.rowData = {
           name: '',
           email: '',
           password: '',
         }
-      }
-    },
-    passwordConfirmation() {
-      if (this.rules.matchingPassword(this.passwordConfirmation) === true) {
-        this.passwordMatches = true
-      } else {
-        this.passwordMatches = false
-      }
-    },
-    'newData.email'() {
-      this.newData.email = this.newData.email.toLowerCase()
-      if (this.rules.email(this.newData.email) === true) {
-        this.isEmailValid = true
-      } else {
-        this.isEmailValid = false
+        this.passwordConfirmation = null
       }
     },
   },
   methods: {
-    ...mapActions('User', ['registerUser']),
-    checkAndRegister() {
-      if (this.passwordMatches && this.isEmailValid) {
-        this.registerError = ''
-        this.register(this.newData)
+    ...mapActions('User', ['updatePassword']),
+    checkAndUpdate() {
+      if (this.passwordMatches) {
+        this.passwordError = ''
+        this.updatePassword(this.rowData)
         this.registerDialog = false
       } else {
-        this.registerError =
-          'Email inválido ou confirmação de senha não confere.'
+        this.registerError = 'Confirmação de senha não confere.'
       }
     },
     setPasswordType() {

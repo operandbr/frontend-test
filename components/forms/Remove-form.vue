@@ -1,7 +1,9 @@
 <template>
   <v-dialog v-model="removeDialog" width="500">
     <template #activator="{ on, attrs }">
-      <v-btn text color="red" v-bind="attrs" v-on="on">Remover</v-btn>
+      <v-btn fab icon color="red" v-bind="attrs" v-on="on"
+        ><v-icon large>mdi-close-circle</v-icon></v-btn
+      >
     </template>
     <v-card>
       <v-container>
