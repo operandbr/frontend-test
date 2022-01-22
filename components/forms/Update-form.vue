@@ -15,13 +15,6 @@
               <v-spacer />
             </v-toolbar>
             <v-container class="py-5">
-              <v-row v-if="error.update" justify="center">
-                <v-col cols="4">
-                  <v-alert outlined type="error">
-                    {{ error.update }}
-                  </v-alert>
-                </v-col>
-              </v-row>
               <v-text-field
                 v-model="$props.rowData.email"
                 label="Email"
@@ -55,7 +48,7 @@
               </v-toolbar-items>
               <v-spacer />
               <v-toolbar-items>
-                <v-btn text @click="update(rowData), (updateDialog = false)"
+                <v-btn text @click="updateUser(rowData), (updateDialog = false)"
                   >Atualizar</v-btn
                 >
               </v-toolbar-items>
@@ -68,7 +61,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
   props: {
     rowData: {
@@ -94,12 +87,9 @@ export default {
       },
     }
   },
-  computed: {
-    ...mapState('User', ['error']),
-  },
   watch: {
     'rowData.email'() {
-      this.$props.rowData.email = this.loginData.email.toLowerCase()
+      this.$props.rowData.email = this.rowData.email.toLowerCase()
     },
   },
   methods: {

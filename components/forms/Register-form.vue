@@ -15,13 +15,6 @@
               <v-spacer />
             </v-toolbar>
             <v-container class="py-5">
-              <v-row v-if="error.register" justify="center">
-                <v-col cols="4">
-                  <v-alert outlined type="error">
-                    {{ error.register }}
-                  </v-alert>
-                </v-col>
-              </v-row>
               <v-text-field
                 v-model="newData.name"
                 label="Nome"
@@ -107,11 +100,11 @@ export default {
     }
   },
   computed: {
-    ...mapState('User', ['data', 'error']),
+    ...mapState('User', ['data']),
   },
   watch: {
     'newData.email'() {
-      this.newData.email = this.loginData.email.toLowerCase()
+      this.newData.email = this.newData.email.toLowerCase()
     },
   },
   methods: {

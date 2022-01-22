@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
   props: {
     rowData: {
@@ -44,9 +44,6 @@ export default {
       removeDialog: false,
       removeConfirm: null,
     }
-  },
-  computed: {
-    ...mapState('User', ['error']),
   },
   methods: {
     ...mapActions('User', ['removeUser']),

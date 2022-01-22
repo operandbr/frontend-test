@@ -4,7 +4,7 @@ const getUsers = async function ({ commit }) {
   this.dispatch('Spinner/setSpinner', true)
 
   await axios
-    .get(`http://localhost:8000/api/user`)
+    .get(`http://localhost:8000/api/users`)
     .then((res) => {
       commit('SET_USERS', res.data)
       return res.data
@@ -21,23 +21,24 @@ const registerUser = async function ({ commit }, newData) {
   await axios
     .post(`http://localhost:8000/api/user/register`, newData)
     .then((res) => {
-      commit('SET_REGISTERERROR', '')
+      commit('SET_USERERROR', '')
       return res.data
     })
     .catch((e) => {
       if (e.response.status === 500) {
         commit(
-          'SET_REGISTERERROR',
-          `${e.response.status}: Alguns espaços foram deixados em Branco.`
+          'SET_USERERROR',
+          `${e.response.status}: Algum campo foi deixado em branco.`
         )
       } else {
         commit(
-          'SET_REGISTERERROR',
+          'SET_USERERROR',
           `${e.response.status}: ${e.response.data.message} Erro no servidor.`
         )
       }
     })
     .finally(() => {
+      this.dispatch('User/getUsers')
       this.dispatch('Spinner/setSpinner', false)
     })
 }
@@ -46,34 +47,34 @@ const updateUser = async function ({ commit }, data) {
   this.dispatch('Spinner/setSpinner', true)
 
   await axios
-    .patch(`http://localhost:8000/api/user/`, data.id, {
-      name: data.newName,
+    .patch(`http://localhost:8000/api/user/` + data.id, {
+      name: data.name,
       email: data.email,
-      password: data.newPassword,
     })
     .then((res) => {
-      commit('SET_UPDATEERROR', '')
+      commit('SET_USERERROR', '')
       return res.data
     })
     .catch((e) => {
       if (e.response.status === 500) {
         commit(
-          'SET_UPDATEERROR',
-          `${e.response.status}: Alguns espaços foram deixados em Branco.`
+          'SET_USERERROR',
+          `${e.response.status}: Algum campo foi deixado em branco.`
         )
       } else {
         commit(
-          'SET_UPDATEERROR',
+          'SET_USERERROR',
           `${e.response.status}: ${e.response.data.message} Erro no servidor.`
         )
       }
     })
     .finally(() => {
+      this.dispatch('User/getUsers')
       this.dispatch('Spinner/setSpinner', false)
     })
 }
 
-const deleteUser = async function ({ commit }, id) {
+const removeUser = async function ({ commit }, id) {
   this.dispatch('Spinner/setSpinner', true)
 
   await axios
@@ -83,27 +84,25 @@ const deleteUser = async function ({ commit }, id) {
     })
     .catch((e) => {
       commit(
-        'SET_REMOVEERROR',
+        'SET_USERERROR',
         `${e.response.status}: ${e.response.data.message} Erro no servidor.`
       )
     })
     .finally(() => {
+      this.dispatch('User/getUsers')
       this.dispatch('Spinner/setSpinner', false)
     })
 }
 
 const clearUsers = function ({ commit }) {
-  this.dispatch('Spinner/setSpinner', true)
-
   commit('SET_USERS', null)
-
-  this.dispatch('Spinner/setSpinner', false)
+  commit('SET_USERERROR', null)
 }
 
 export default {
   getUsers,
   registerUser,
   updateUser,
-  deleteUser,
+  removeUser,
   clearUsers,
 }

@@ -76,6 +76,9 @@ export default {
   mounted() {
     this.getUsers()
   },
+  unmounted() {
+    this.clearUsers()
+  },
   methods: {
     ...mapActions('User', ['getUsers', 'clearUsers']),
   },
