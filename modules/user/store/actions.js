@@ -4,7 +4,7 @@ const getUsers = async function ({ commit }) {
   this.dispatch('Spinner/setSpinner', true)
 
   await axios
-    .get(`http://localhost:8000/api/users`)
+    .get(`https://operand-test-api.herokuapp.com/api/users`)
     .then((res) => {
       commit('SET_USERS', res.data)
       return res.data
@@ -19,7 +19,7 @@ const registerUser = async function ({ commit }, newData) {
   this.dispatch('Spinner/setSpinner', true)
 
   await axios
-    .post(`http://localhost:8000/api/user/register`, newData)
+    .post(`https://operand-test-api.herokuapp.com/api/user/register`, newData)
     .then((res) => {
       commit('SET_USERERROR', '')
       return res.data
@@ -47,7 +47,7 @@ const updateUser = async function ({ commit }, data) {
   this.dispatch('Spinner/setSpinner', true)
 
   await axios
-    .patch(`http://localhost:8000/api/user/` + data.id, {
+    .patch(`https://operand-test-api.herokuapp.com/api/user/` + data.id, {
       name: data.name,
       email: data.email,
     })
@@ -78,7 +78,7 @@ const updatePassword = async function ({ commit }, data) {
   this.dispatch('Spinner/setSpinner', true)
 
   await axios
-    .patch(`http://localhost:8000/api/user/` + data.id, {
+    .patch(`https://operand-test-api.herokuapp.com/api/user/` + data.id, {
       password: data.password,
     })
     .then((res) => {
@@ -108,7 +108,7 @@ const removeUser = async function ({ commit }, id) {
   this.dispatch('Spinner/setSpinner', true)
 
   await axios
-    .delete(`http://localhost:8000/api/user/` + id)
+    .delete(`https://operand-test-api.herokuapp.com/api/user/` + id)
     .then((res) => {
       return res.data
     })
