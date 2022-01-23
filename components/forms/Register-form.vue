@@ -164,7 +164,7 @@ export default {
     checkAndRegister() {
       if (this.passwordMatches && this.isEmailValid) {
         this.registerError = ''
-        this.register(this.newData)
+        this.registerUser(this.newData)
         this.registerDialog = false
       } else {
         this.registerError =
