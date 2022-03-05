@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <TheHeader />
-
     <main id="main">
       <router-view />
     </main>
@@ -17,6 +16,4 @@ export default {
 };
 </script>
 
-<style>
 
-</style>
