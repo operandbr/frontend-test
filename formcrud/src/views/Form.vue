@@ -105,11 +105,10 @@
 </template>
 <script>
 import { required, minLength, sameAs, email } from "vuelidate/lib/validators";
-import { singleErrorExtractorMixin } from "vuelidate-error-extractor";
 
 export default {
   name: "Form",
-  mixins: [singleErrorExtractorMixin],
+
   data() {
     return {
       user: {
@@ -123,11 +122,7 @@ export default {
       buttonD: false,
     };
   },
-  props: {
-    messages: {
-      type: Object,
-    },
-  },
+
   validations: {
     user: {
       firstName: {
