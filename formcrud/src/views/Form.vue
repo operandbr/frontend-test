@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-4">
-    <b-form class="form">
+    <h2 class="text-center mb-4 mt-2">User registration</h2>
+    <b-form class="form" @submit.prevent="saveUser" method="POST">
       <b-form-group label="First Name" label-for="user_first_name">
         <b-form-input
           id="first_name"
@@ -33,13 +34,7 @@
           >Minimum three characters</b-form-invalid-feedback
         >
       </b-form-group>
-      <b-form-group
-        :messages="messages"
-        :validator="$v.user.email"
-        class="mt-3"
-        label="Email"
-        label-for="user_email"
-      >
+      <b-form-group class="mt-3" label="Email" label-for="user_email">
         <b-form-input
           id="user_email"
           type="email"
@@ -80,7 +75,7 @@
           id="user_password2"
           type="password"
           v-model.trim="user.password2"
-          @change="$v.user.password2.$touch()"
+          @input="$v.user.password2.$touch()"
           required
           :state="validationConfirmPass"
         ></b-form-input>
@@ -100,6 +95,9 @@
       >
         Save
       </b-button>
+      <b-button to="/" class="float-right mt-2 mr-2" variant="secondary"
+        >Come back</b-button
+      >
     </b-form>
   </div>
 </template>
@@ -222,13 +220,12 @@ export default {
   },
 };
 </script>
-<style >
-.title {
-  font-family: "Poppins" sans-serif;
-  color: aqua;
-  font-style: normal;
+<style scoped>
+h2,
+p {
+  font-family: "Lato", sans-serif;
+  color: #7a72ff;
 }
-
 .form {
   background: #f4f8e6;
   display: table;

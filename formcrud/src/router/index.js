@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import List from '../views/List.vue'
+import Table from '../views/Table.vue'
 import Form from '../views/Form.vue'
 
 Vue.use(VueRouter)
@@ -9,7 +9,7 @@ const routes = [
   {
     path: '/',
     name: 'list',
-    component: List
+    component: Table
   },
   {
     path: '/signup',

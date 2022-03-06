@@ -1,10 +1,8 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="light" variant="light">
-      <b-navbar-brand href="#">CRUD</b-navbar-brand>
-
+      <b-navbar-brand class="crud" href="/">USERCRUD</b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item to="/">Users</b-nav-item>
@@ -21,6 +19,11 @@ export default {
 </script>
 
 <style scoped>
+.crud {
+  font-family: "Lato", sans-serif;
+  color: #7a72ff !important;
+  font-style: italic;
+}
 nav {
   display: flex;
   align-items: center;
