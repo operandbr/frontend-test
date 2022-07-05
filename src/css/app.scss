@@ -1,3 +1,6 @@
-#app {
+@import './global.variables.scss';
 
-}
+
+@import './variables/colors',
+        './variables/fonts'
+        ;

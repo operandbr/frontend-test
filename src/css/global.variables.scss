@@ -1,0 +1,101 @@
+$denim              : #1976D2;
+$blue-ribbon        : #006AE7;
+$jungle-green       : #26A69A;
+$seance             : #9C27B0;
+$cod-gray           : #1D1D1D;
+$mountain-meadow    : #54E762;
+$monza              : #F01313;
+$pomegranate        : #f44336;
+$saffron            : #F2C037;
+$gold               : #594C00;
+$spindle            : #BFD2E9;
+
+
+$grey            : #F4F6F8 !default;
+$grey-2          : #E7E7E7 !default;
+$grey-dark       : #979797 !default;
+
+$dark            : #444444 !default;
+$white           : #ffffff !default;
+$yellow          : #ffe153 !default;
+$yellow-dark     : #ffcd00 !default;
+$orange          : #ff9240 !default;
+$orange-dark     : #ff7940 !default;
+$red             : #E35252 !default;
+$red-dark        : #D0021B !default;
+$purple          : #7f33c2 !default;
+$purple-dark     : #440099 !default;
+$blue-light      : #1386F0 !default;
+$green           : #6BDD62 !default;
+$green-dark      : #41CF3E !default;
+
+
+$operand: #fe8e2a;
+
+
+$primary   : $denim !default;
+$secondary : $jungle-green !default;
+$accent    : $seance !default;
+$dark      : $cod-gray !default;
+$light     : $spindle !default;
+$positive  : $mountain-meadow !default;
+$success   : $mountain-meadow !default;
+$negative  : $monza !default;
+$danger    : $pomegranate !default;
+$info      : $blue-ribbon !default;
+$warning   : $saffron !default;
+
+
+$colors: (
+  'denim' : $denim,
+  'blueribbon,' : $blue-ribbon,
+  'junglegreen,' : $jungle-green,
+  'seance' : $seance,
+  'codgray,' : $cod-gray,
+  'mountainmeadow,' : $mountain-meadow,
+  'monza' : $monza,
+  'pomegranate' : $pomegranate,
+  'saffron' : $saffron,
+  'gold' : $gold,
+  'spindle' : $spindle,
+  'grey' : $grey,
+  'grey2,' : $grey-2,
+  'greydark,' : $grey-dark,
+  'white' : $white,
+  'yellow' : $yellow,
+  'yellowdark,' : $yellow-dark,
+  'orange' : $orange,
+  'orangedark,' : $orange-dark,
+  'red' : $red,
+  'reddark,' : $red-dark,
+  'purple' : $purple,
+  'purpledark,' : $purple-dark,
+  'bluelight,' : $blue-light,
+  'green' : $green,
+  'greendark,' : $green-dark,
+  'primary' : $primary,
+  'secondary' : $secondary,
+  'accent' : $accent,
+  'dark' : $dark,
+  'light' : $light,
+  'positive' : $positive,
+  'success' : $success,
+  'negative' : $negative,
+  'danger' : $danger,
+  'info' : $info,
+  'warning' : $warning,
+  'operand' : $operand
+);
+
+@each $name, $color in $colors {
+  .bg-#{$name}
+  {
+    background-color: #{$color} ;
+  }
+  .text-#{$name}{
+    color: #{$color};
+  }
+  .border-color-#{$name}{
+    border-color: #{$color};
+  }
+}

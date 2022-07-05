@@ -1,0 +1,45 @@
+
+:root{
+
+  --primary                   : #{$primary};
+  --secondary                 : #{$secondary};
+  --accent                    : #{$accent};
+  --dark                      : #{$dark};
+  --light                     : #{$light};
+  --positive                  : #{$positive};
+  --success                   : #{$success};
+  --negative                  : #{$negative};
+  --danger                    : #{$danger};
+  --info                      : #{$info};
+  --warning                   : #{$warning};
+  --gold                      : #{$gold};
+
+  --grey                  : #{$grey};
+  --grey-2                : #{$grey-2};
+
+
+  --grey-dark             : #{$grey-dark};
+  --dark                  : #{$dark};
+  --white                 : #{$white};
+  --yellow                : #{$yellow};
+  --yellow-dark           : #{$yellow-dark};
+  --orange                : #{$orange};
+  --orange-dark           : #{$orange-dark};
+  --red                   : #{$red};
+  --red-dark              : #{$red-dark};
+  --purple                : #{$purple};
+  --purple-dark           : #{$purple-dark};
+  --green                 : #{$green};
+  --green-dark            : #{$green-dark};
+  --blue-light            : #{$blue-light};
+
+  // Components
+  --chat-ballon-background : var(--grey);
+  --bg-drawer: var(--purple-dark);
+
+  --footer-navigation-bar-color: var(--purple-dark);
+  --footer-navigation-item-color: var(--white);
+  --footer-navigation-bar-active-color: var(--footer-navigation-item-color);
+  --footer-navigation-item-active-color: var(--footer-navigation-bar-color);
+
+}

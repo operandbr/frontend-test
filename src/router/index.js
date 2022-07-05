@@ -5,11 +5,17 @@ import { Home } from '../pages';
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
       name: 'Home',
       component: Home,
+    },
+    {
+      path: '/novo',
+      name: 'novo',
+      component: () => import('../pages/save.page'),
     },
   ],
 });
