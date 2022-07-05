@@ -13,6 +13,11 @@ export default new Router({
       component: Home,
     },
     {
+      path: '/lista',
+      name: 'lista',
+      component: () => import('../pages/list.page'),
+    },
+    {
       path: '/novo',
       name: 'novo',
       component: () => import('../pages/save.page'),
