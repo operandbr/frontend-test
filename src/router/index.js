@@ -22,5 +22,10 @@ export default new Router({
       name: 'novo',
       component: () => import('../pages/save.page'),
     },
+    {
+      path: '/editar/:id',
+      name: 'editar',
+      component: () => import('../pages/save.page'),
+    },
   ],
 });

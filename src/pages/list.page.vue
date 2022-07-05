@@ -6,7 +6,7 @@
           <h3>Revise todos os Usuários Cadastrados</h3>
         </div>
         <div class="col-12 col-md-4">
-          <router-link to="/novo" class="btn btn-primary w-100">Novo Usuário</router-link>
+          <router-link to="/novo" class="btn btn-info btn-sm ">Novo Usuário</router-link>
         </div>
       </div>
 
@@ -23,8 +23,13 @@
             <tr v-for="(usuario, index) in usuarios" :key="index">
               <td>
                 {{
-                  usuario
+                  usuario.nome
                 }}
+              </td>
+              <td>
+                <router-link :to="`/editar/${usuario.id}`" class="btn btn-info btn-sm ">Editar</router-link>
+                <router-link :to="`/detalhes/${usuario.id}`" class="btn btn-info btn-sm ">Detalhes</router-link>
+                <button @click="handleRemove(usuario.id)" class="btn btn-info btn-sm ">Remover</button>
               </td>
             </tr>
           </tbody>
@@ -44,6 +49,20 @@ export default {
     return {
       usuarios: [],
     };
+  },
+  async created() {
+    this.handleLoad();
+  },
+
+  methods: {
+    async handleLoad() {
+      const usuarios = await this.$store.dispatch('usuario/getAll');
+      this.usuarios = usuarios;
+    },
+    handleRemove(id) {
+      this.$store.dispatch('usuario/remove', id);
+      this.handleLoad();
+    },
   },
 
 };

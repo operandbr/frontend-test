@@ -12,7 +12,7 @@
 
     <div class="row d-flex justify-content-center">
       <div class="col-4">
-        <router-link to="/lista"  class="btn btn-primary w-100">
+        <router-link to="/lista"  class="btn btn-info btn-lg mr-3 semi">
           Acessar
         </router-link>
       </div>

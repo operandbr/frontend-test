@@ -32,6 +32,16 @@ export function findById(context, id) {
  *
  * @param {*} context
  * @param {*} id
+ * @returns
+ */
+export function getAll(context) {
+  return context.state.lista;
+}
+
+/**
+ *
+ * @param {*} context
+ * @param {*} id
  */
 export function remove(context, id) {
   if (id) {
