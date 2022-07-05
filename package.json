@@ -1,0 +1,8 @@
+{
+  "name": "operand-front-end",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:kurybr/frontend-test.git",
+  "author": "Jorge Rafael <eu.jorgerafael@gmail.com>",
+  "license": "MIT"
+}
