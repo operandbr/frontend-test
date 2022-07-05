@@ -27,9 +27,12 @@
                 }}
               </td>
               <td>
-                <router-link :to="`/editar/${usuario.id}`" class="btn btn-info btn-sm ">Editar</router-link>
-                <router-link :to="`/detalhes/${usuario.id}`" class="btn btn-info btn-sm ">Detalhes</router-link>
-                <button @click="handleRemove(usuario.id)" class="btn btn-info btn-sm ">Remover</button>
+                <router-link :to="`/editar/${usuario.id}`" class="btn btn-info btn-sm ">
+                Editar</router-link>
+                <router-link :to="`/detalhes/${usuario.id}`" class="btn btn-info btn-sm ">
+                Detalhes</router-link>
+                <button @click="handleRemove(usuario.id)" class="btn btn-info btn-sm ">
+                Remover</button>
               </td>
             </tr>
           </tbody>
