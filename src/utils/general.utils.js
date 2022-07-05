@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 /* eslint-disable no-bitwise */
 /* https://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid */
 export function generateUUID() { // Public Domain/MIT

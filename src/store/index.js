@@ -1,10 +1,10 @@
+import Vue from 'vue';
 import Vuex from 'vuex';
 
-
-/*
-  Stores
-*/
+/* Store */
 import usuarioStore from './usuario';
+
+Vue.use(Vuex);
 
 
 const Store = new Vuex.Store({
