@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Footer from './components/footer.component';
-import Header from './components/header.component';
+import Footer from './components/partials/footer.component';
+import Header from './components/partials/header.component';
 
 export default {
   name: 'Operand',

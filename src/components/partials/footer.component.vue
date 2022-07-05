@@ -1,7 +1,7 @@
 <template>
   <footer class="row bg-grey">
-    <div class="align-self-center">
-        Feito com
+    <div class="align-self-center d-flex justify-content-end">
+        Feito com ❤️
     </div>
   </footer>
 </template>
