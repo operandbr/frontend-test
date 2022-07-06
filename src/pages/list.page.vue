@@ -4,11 +4,11 @@
       <div class="card-body">
         <section class="row mb-4 mt-4">
           <div class="col-12 col-md-8">
-            <h3>Revise todos os Usuários Cadastrados</h3>
+            <h3>Revise todos os usuários cadastrados</h3>
           </div>
           <div class="col-12 col-md-4 text-end">
             <router-link to="/novo" class="btn btn-primary btn-sm"
-              >Novo Usuário</router-link
+              >Novo usuário</router-link
             >
           </div>
         </section>
@@ -25,10 +25,11 @@
               <tr v-for="(usuario, index) in usuarios" :key="index">
                 <td class="align-middle">
                   {{ usuario.nome }}
-
                 </td>
                 <td>
+
                   <div class="d-flex justify-content-end">
+
                     <router-link
                       :to="`/detalhe/${usuario.id}`"
                       class="btn btn-primary btn-sm d-inline-flex me-4"
@@ -36,13 +37,16 @@
                       <span class="material-icons me-2"> open_in_new </span>
                       Detalhes
                     </router-link>
+
                     <button
                       @click="handleRemove(usuario.id)"
                       class="btn btn-danger btn-sm d-inline-flex"
                     >
                       <span class="material-icons">delete_forever</span>
                     </button>
+
                   </div>
+
                 </td>
               </tr>
             </tbody>
@@ -81,9 +85,7 @@ export default {
       const value = await this.$swal({
         title: 'Excluir',
         icon: 'warning',
-        html: `
-         Tem certeza que deseja remover esse usuário
-        `,
+        html: 'Tem certeza que deseja remover esse usuário',
         showCloseButton: false,
         showCancelButton: true,
         focusConfirm: false,

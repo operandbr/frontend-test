@@ -19,7 +19,7 @@
           <div class="col-12">
             <form @submit.prevent="handleSubmit">
               <op-input
-                label="Nome"
+                label="Nome Completo"
                 type="text"
                 v-model="form.nome"
                 id="nome"
@@ -50,7 +50,7 @@
                       },
                       {
                         valid: handleRule('idade', 'between'),
-                        message: 'Insira uma idade entre 20 e 30 anos',
+                        message: 'Insira uma idade entre 18 e 99 anos',
                       },
                     ]"
                   />
@@ -69,7 +69,7 @@
                       },
                       {
                         valid: handleRule('celular', 'invalid'),
-                        message: 'Formato de Celular Inválido',
+                        message: 'Digite um celular válido',
                       },
                     ]"
                     id="idade"
@@ -132,7 +132,7 @@ export default {
       idade: {
         required,
         numeric,
-        between: between(20, 30),
+        between: between(18, 99),
       },
       celular: {
         required,
