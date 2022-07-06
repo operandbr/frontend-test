@@ -23,5 +23,11 @@ export default {
 
 
 <style lang="scss">
-@import '@/css/app.scss';
+@import './css/app.scss';
+
+
+body {
+  background: var(--grey);
+}
+
 </style>

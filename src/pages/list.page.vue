@@ -59,13 +59,27 @@ export default {
 
   methods: {
     async handleLoad() {
-      const usuarios = await this.$store.dispatch('usuario/getAll');
-
-      this.usuarios = usuarios;
+      const loader = this.$loading.show();
+      try {
+        const usuarios = await this.$store.dispatch('usuario/getAll');
+        this.usuarios = usuarios;
+      } catch (error) {
+        this.$swal('Não foi possível listar os usuários');
+      } finally {
+        loader.hide();
+      }
     },
     handleRemove(id) {
-      this.$store.dispatch('usuario/remove', id);
-      this.handleLoad();
+      const loader = this.$loading.show();
+      try {
+        this.$store.dispatch('usuario/remove', id);
+        this.$swal('usuário removido com sucesso');
+        this.handleLoad();
+      } catch (error) {
+        this.$swal('Não foi possível remover o usuário');
+      } finally {
+        loader.hide();
+      }
     },
   },
 

@@ -10,7 +10,7 @@
     </div>
     <div class="row mt-4 mb-4">
       <div class="col-12">
-        <form @submit="handleSubmit">
+        <form @submit.prevent="handleSubmit">
           <div class="form-group mb-4">
             <label for="nome">Nome</label>
             <input
@@ -65,9 +65,16 @@ export default {
     }
   },
   methods: {
-    async handleSubmit(evt) {
-      evt.preventDefault();
-      await this.$store.dispatch('usuario/save', this.form);
+    async handleSubmit() {
+      const loader = this.$loading.show();
+      try {
+        await this.$store.dispatch('usuario/save', this.form);
+        this.$swal('Usuário salvo com sucesso.');
+      } catch (error) {
+        this.$swal('Houve um problema ao salvar esse usuário.');
+      } finally {
+        loader.hide();
+      }
     },
   },
 };
