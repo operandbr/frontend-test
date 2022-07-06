@@ -79,20 +79,16 @@ export default {
     },
     async handleRemove(id) {
       const value = await this.$swal({
-        title: '<strong>HTML <u>example</u></strong>',
-        icon: 'info',
+        title: 'Excluir',
+        icon: 'warning',
         html: `
-          You can use <b>bold text</b>
-          <a href="//sweetalert2.github.io">links</a>
-          and other HTML tags
+         Tem certeza que deseja remover esse usuário
         `,
-        showCloseButton: true,
+        showCloseButton: false,
         showCancelButton: true,
         focusConfirm: false,
-        confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
-        confirmButtonAriaLabel: 'Thumbs up, great!',
-        cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
-        cancelButtonAriaLabel: 'Thumbs down',
+        confirmButtonText: 'Confirmar',
+        cancelButtonText: 'Cancelar',
       });
 
       if (!value.isConfirmed) {
