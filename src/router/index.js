@@ -27,5 +27,10 @@ export default new Router({
       name: 'editar',
       component: () => import('../pages/save.page'),
     },
+    {
+      path: '/detalhe/:id',
+      name: 'detalhe',
+      component: () => import('../pages/detail.page'),
+    },
   ],
 });

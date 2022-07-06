@@ -1,4 +1,7 @@
-import { generateUUID } from '../../utils/general.utils';
+import firebase from '../../boot/firebase';
+
+
+const db = firebase.database().ref('usuario');
 
 /**
  *
@@ -6,15 +9,17 @@ import { generateUUID } from '../../utils/general.utils';
  * @param {*} payload
  * @returns
  */
-export function save(context, payload) {
-  const { id } = payload;
+export function save(_, payload) {
+  const usuario = payload;
+  const { id } = usuario;
   if (id) {
-    context.commit('ATUALIZA', payload);
-    return;
+    delete usuario.id;
+    db.child(id).update(usuario);
+  } else {
+    db.push(usuario);
   }
-  const pokemon = payload;
-  pokemon.id = generateUUID();
-  context.commit('REGISTRA', payload);
+
+  return usuario;
 }
 
 /**
@@ -23,8 +28,16 @@ export function save(context, payload) {
  * @param {*} id
  * @returns
  */
-export function findById(context, id) {
-  return context.state.lista.find(poke => poke.id === id);
+export async function findById(_, id) {
+  const snapshot = await db.child(id).once('value');
+
+  if (snapshot.exists()) {
+    const usuario = snapshot.val();
+    usuario.id = snapshot.key;
+    return usuario;
+  }
+
+  return {};
 }
 
 
@@ -34,8 +47,15 @@ export function findById(context, id) {
  * @param {*} id
  * @returns
  */
-export function getAll(context) {
-  return context.state.lista;
+export async function getAll() {
+  let snapshot = await db.once('value');
+  snapshot = snapshot.toJSON();
+  return Object.keys(snapshot).map((key) => {
+    const childKey = key;
+    const childData = snapshot[key];
+    childData.id = childKey;
+    return childData;
+  });
 }
 
 /**
@@ -43,9 +63,11 @@ export function getAll(context) {
  * @param {*} context
  * @param {*} id
  */
-export function remove(context, id) {
+export async function remove(_, id) {
   if (id) {
-    context.commit('DELETA', id);
+    return db.child(id).remove();
   }
+
+  return false;
 }
 

@@ -29,7 +29,7 @@
               <td>
                 <router-link :to="`/editar/${usuario.id}`" class="btn btn-info btn-sm ">
                 Editar</router-link>
-                <router-link :to="`/detalhes/${usuario.id}`" class="btn btn-info btn-sm ">
+                <router-link :to="`/detalhe/${usuario.id}`" class="btn btn-info btn-sm ">
                 Detalhes</router-link>
                 <button @click="handleRemove(usuario.id)" class="btn btn-info btn-sm ">
                 Remover</button>
@@ -60,6 +60,7 @@ export default {
   methods: {
     async handleLoad() {
       const usuarios = await this.$store.dispatch('usuario/getAll');
+
       this.usuarios = usuarios;
     },
     handleRemove(id) {

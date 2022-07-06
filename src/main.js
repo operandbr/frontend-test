@@ -11,11 +11,13 @@ import App from './App';
 import router from './router';
 import store from './store';
 
+
 Vue.config.productionTip = false;
 
 /* Vuex */
 Vue.use(Vuex);
 Vue.use(VueMask);
+
 
 /* eslint-disable no-new */
 new Vue({
@@ -23,4 +25,5 @@ new Vue({
   router,
   store,
   render: h => h(App),
+  created() { },
 });
