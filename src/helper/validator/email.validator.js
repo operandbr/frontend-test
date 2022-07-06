@@ -10,20 +10,20 @@ const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[
  * @example 'www.foo@bar.developer.com.tom is a invalid format'
  * @return { Boolean } is a valid email
  */
-const email = value => value && value.length && regex.test( value );
+const email = value => value && value.length && regex.test(value);
 
-const isEmail = ( value ) => {
-    const emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i;
-    return emailRegex.test( value );
+const isEmail = (value) => {
+  const emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i;
+  return emailRegex.test(value);
 };
 
-function validaEmail ( email ) {
-    if ( !email ) {
-        return false;
-    }
+function validaEmail(_email) {
+  if (!_email) {
+    return false;
+  }
 
-    return regex.test( email.trim() );
-};
+  return regex.test(email.trim());
+}
 
 export { email, regex, isEmail, validaEmail };
 

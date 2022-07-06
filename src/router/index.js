@@ -32,5 +32,9 @@ export default new Router({
       name: 'detalhe',
       component: () => import('../pages/detail.page'),
     },
+    {
+      path: '*',
+      redirect: '/',
+    },
   ],
 });

@@ -6,8 +6,8 @@
           <div class="col-12 col-md-8">
             <h3>Revise todos os Usuários Cadastrados</h3>
           </div>
-          <div class="col-12 col-md-4">
-            <router-link to="/novo" class="btn btn-info btn-sm"
+          <div class="col-12 col-md-4 text-end">
+            <router-link to="/novo" class="btn btn-primary btn-sm"
               >Novo Usuário</router-link
             >
           </div>
@@ -18,19 +18,20 @@
             <thead>
               <tr>
                 <th>Usuário</th>
-                <th style="width: 40%">Ações</th>
+                <th style="width: 40%" class="text-end">Ações</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="(usuario, index) in usuarios" :key="index">
-                <td>
+                <td class="align-middle">
                   {{ usuario.nome }}
+
                 </td>
                 <td>
-                  <div class="d-flex justify-content-evenly">
+                  <div class="d-flex justify-content-end">
                     <router-link
                       :to="`/detalhe/${usuario.id}`"
-                      class="btn btn-primary btn-sm d-inline-flex"
+                      class="btn btn-primary btn-sm d-inline-flex me-4"
                     >
                       <span class="material-icons me-2"> open_in_new </span>
                       Detalhes
@@ -39,8 +40,7 @@
                       @click="handleRemove(usuario.id)"
                       class="btn btn-danger btn-sm d-inline-flex"
                     >
-                      <span class="material-icons me-2">delete_forever</span>
-                      Remover
+                      <span class="material-icons">delete_forever</span>
                     </button>
                   </div>
                 </td>
@@ -77,11 +77,31 @@ export default {
         loader.hide();
       }
     },
-    handleRemove(id) {
+    async handleRemove(id) {
+      const value = await this.$swal({
+        title: '<strong>HTML <u>example</u></strong>',
+        icon: 'info',
+        html: `
+          You can use <b>bold text</b>
+          <a href="//sweetalert2.github.io">links</a>
+          and other HTML tags
+        `,
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
+        confirmButtonAriaLabel: 'Thumbs up, great!',
+        cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
+        cancelButtonAriaLabel: 'Thumbs down',
+      });
+
+      if (!value.isConfirmed) {
+        return;
+      }
+
       const loader = this.$loading.show();
       try {
         this.$store.dispatch('usuario/remove', id);
-        this.$swal('usuário removido com sucesso');
         this.handleLoad();
       } catch (error) {
         this.$swal('Não foi possível remover o usuário');

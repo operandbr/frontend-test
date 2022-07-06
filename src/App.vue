@@ -12,12 +12,10 @@ import Header from './components/partials/header.component';
 
 export default {
   name: 'Operand',
-
   components: {
     'v-header': Header,
     'v-footer': Footer,
   },
-
 };
 </script>
 
@@ -28,6 +26,7 @@ export default {
 *{
   font-family: Open Sans,sans-serif;
 }
+
 body {
   background: var(--grey);
 }
