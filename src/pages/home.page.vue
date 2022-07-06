@@ -2,11 +2,7 @@
   <main id="home-page">
     <div class="row mb-4 mt-4">
         <div class="col-12">
-            Lorem ipsum dolor sit amet consect
-            etur, adipisicing elit. Commodi nesciunt, vero numquam qua
-            e necessitatibus amet soluta? Accusamus pariatur labore fugiat
-            odit quam amet repudiandae, inventore
-            cupiditate, in esse quos cumque!
+            Bem vindo ao Opario
         </div>
     </div>
 

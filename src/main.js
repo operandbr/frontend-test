@@ -3,6 +3,8 @@ import Vuex from 'vuex';
 import VueMask from 'v-mask';
 import VueSweetalert2 from 'vue-sweetalert2';
 import VueLoadingOverlay from 'vue-loading-overlay';
+import Vuelidate from 'vuelidate';
+
 
 /* Dependencias de estilo  */
 import 'bootstrap/dist/css/bootstrap.css';
@@ -23,6 +25,8 @@ Vue.use(VueLoadingOverlay);
 
 Vue.use(VueMask);
 Vue.use(VueSweetalert2);
+Vue.use(Vuelidate);
+
 
 /* eslint-disable no-new */
 new Vue({

@@ -24,6 +24,7 @@
     "vue-router": "^3.0.1",
     "vue-sweetalert2": "^5.0.5",
     "vue-template-compiler": "^2.6.11",
+    "vuelidate": "^0.7.7",
     "vuex": "^3.6.2",
     "vuikit": "^0.8.10"
   },

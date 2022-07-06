@@ -20,10 +20,13 @@
         Informações completas do usuário
       </div>
     </section>
+
+
     <section class="row mb-4">
       <div class="col-12">
         <ul>
           <li>Idade: {{usuario.idade}} </li>
+          <li>Celular: {{usuario.celular}} </li>
         </ul>
       </div>
     </section>
