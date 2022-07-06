@@ -1,21 +1,34 @@
 <template>
   <div class="detalhe-page">
-    <div class="row">
+    <section class="row mb-4 mt-4">
       <div class="col-4">
         <router-link to="/lista" class="btn btn-primary"> Voltar </router-link>
       </div>
-      <div class="col-8">
-        <h3>Detalhes</h3>
+      <div class="col-6 text-end">
+        <h3>{{usuario.nome}}</h3>
       </div>
-    </div>
-    <div class="row">
+      <div class="col-2 text-end">
+        <router-link :to="`/editar/${usuario.id}`" class="btn btn-primary btn-sm d-inline-flex">
+          <span class="material-icons me-2"> mode_edit </span>
+          Editar
+        </router-link>
+      </div>
+    </section>
+
+    <section class="row mb-4">
+      <div class="col-12">
+        Informações completas do usuário
+      </div>
+    </section>
+    <section class="row mb-4">
       <div class="col-12">
         <ul>
-          <li>Nome: {{usuario.nome}}</li>
           <li>Idade: {{usuario.idade}} </li>
         </ul>
       </div>
-    </div>
+    </section>
+
+
   </div>
 </template>
 

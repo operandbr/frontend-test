@@ -25,7 +25,9 @@ export default {
 <style lang="scss">
 @import './css/app.scss';
 
-
+*{
+  font-family: Open Sans,sans-serif;
+}
 body {
   background: var(--grey);
 }

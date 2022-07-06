@@ -1,51 +1,57 @@
 <template>
   <main id="lista-page">
-
-      <div class="row mb-4 mt-4">
-        <div class="col-12 col-md-8">
-          <h3>Revise todos os Usuários Cadastrados</h3>
-        </div>
-        <div class="col-12 col-md-4">
-          <router-link to="/novo" class="btn btn-info btn-sm ">Novo Usuário</router-link>
-        </div>
+    <div class="row mb-4 mt-4">
+      <div class="col-12 col-md-8">
+        <h3>Revise todos os Usuários Cadastrados</h3>
       </div>
+      <div class="col-12 col-md-4">
+        <router-link to="/novo" class="btn btn-info btn-sm"
+          >Novo Usuário</router-link
+        >
+      </div>
+    </div>
 
-      <section>
+    <section>
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th>Usuário</th>
+            <th style="width: 40%">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(usuario, index) in usuarios" :key="index">
+            <td>
+              {{ usuario.nome }}
+            </td>
+            <td>
+              <div class="d-flex justify-content-evenly">
 
-        <table class="table table-sm">
-          <thead>
-            <tr>
-              <th>Usuário</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(usuario, index) in usuarios" :key="index">
-              <td>
-                {{
-                  usuario.nome
-                }}
-              </td>
-              <td>
-                <router-link :to="`/editar/${usuario.id}`" class="btn btn-info btn-sm ">
-                Editar</router-link>
-                <router-link :to="`/detalhe/${usuario.id}`" class="btn btn-info btn-sm ">
-                Detalhes</router-link>
-                <button @click="handleRemove(usuario.id)" class="btn btn-info btn-sm ">
-                Remover</button>
-              </td>
-            </tr>
-          </tbody>
 
-        </table>
-
-      </section>
-
+              <router-link
+                :to="`/detalhe/${usuario.id}`"
+                class="btn btn-primary btn-sm d-inline-flex"
+              >
+                <span class="material-icons me-2"> open_in_new </span>
+                Detalhes
+              </router-link>
+              <button
+                @click="handleRemove(usuario.id)"
+                class="btn btn-danger btn-sm d-inline-flex"
+              >
+                <span class="material-icons me-2">delete_forever</span>
+                Remover
+              </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
   </main>
 </template>
 
 <script>
-
 export default {
   name: 'lista',
   data() {
@@ -82,7 +88,5 @@ export default {
       }
     },
   },
-
 };
-
 </script>
