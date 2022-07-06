@@ -11,7 +11,7 @@
 
 
 export default {
-  name: 'footer-app',
+  name: 'op-footer',
   components: { },
 };
 

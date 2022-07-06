@@ -3,6 +3,9 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 
+/**
+ * Informações temporárias que serão excluidas após um prazo determinado.
+ */
 const config = {
   apiKey: 'AIzaSyBZ92ZiNGBRw4MDvwbj1pj7unGeOYoE98E',
   authDomain: 'operand-kury.firebaseapp.com',
