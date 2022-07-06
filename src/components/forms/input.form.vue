@@ -17,6 +17,7 @@
 
 <script>
 export default {
+  name: 'op-input',
   created() { },
   computed: {
     isInvalid: {
