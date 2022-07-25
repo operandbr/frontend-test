@@ -1,0 +1,1 @@
+ul.h-breadcrumb{text-align:left;list-style:none}ul.h-breadcrumb li{display:inline}ul.h-breadcrumb li a{color:#1f264a!important;text-decoration:none;font-weight:600}ul.h-breadcrumb li a .b-icon{padding-right:5px}ul.h-breadcrumb li a:hover{text-decoration:underline}ul.h-breadcrumb li+li:before{text-align:center;padding:8px;color:#1f264a;content:"/\00a0"}
