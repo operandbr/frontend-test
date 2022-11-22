@@ -44,7 +44,7 @@ Tudo citado a cima é providenciado pelo pacote Vue CLI.
 
 - O projeto abrirá por padrão em http://localhost:3000/ ou http://127.0.0.1:3000/.
 
-OBS.: Se você já tiver um projeto rodando no endereço padrão de _localhost_ na porta 3000 o projeto abrirá em uma nova porta, então fique atento no que apareçe no terminal.
+OBS.: Se você já tiver um projeto rodando no endereço padrão de _localhost_ na porta 3000 o projeto abrirá em uma nova porta, então fique atento no que aparece no terminal.
 
 ## Live-APP
 
