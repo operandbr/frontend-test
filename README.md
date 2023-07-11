@@ -24,10 +24,11 @@ Segue abaixo orientações para esta etapa do processo de seleção:
 
 ## 🧾 Detalhes do projeto
 * Para o projeto você pode utilizar um framework ou criar seus próprios componentes e estilos
-* Crie um CRUD de usuários
+* Crie um CRUD de usuários (Nome, e-mail, senha e mais campos a sua escolha)
 
 ## 🤯 Diferenciais
-* Persistência dos dados (Firebase, Localstorage)
+* Persistência dos dados no Firebase usando Firestore
+* Autenticação deles usando login por e-mail e senha do firebase
 * Hospedagem da aplicação em algum serviço gratuito
 * Organização nos commits
 * Componentização
