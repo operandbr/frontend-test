@@ -30,7 +30,7 @@ Segue abaixo orientações para esta etapa do processo de seleção:
 * Persistência dos dados (Firebase, Localstorage)
 * Hospedagem da aplicação em algum serviço gratuito
 * Organização nos commits
-* Componentização dos elementos (que podem ser reutilizados)
+* Componentização
 * Clean Code
 * Indentação / Organização nos códigos e templates
 * README organizado e detalhado
