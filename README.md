@@ -4,8 +4,7 @@
 Para você que está participando do processo de seleção para a vaga de Desenvolvedor(a) Front-end, ou apenas quer deixar seu projeto em nossa base para futuras vagas.
 
 Segue abaixo orientações para esta etapa do processo de seleção:
-
-## 🍴 Fazer um Fork deste projeto
+## 💻 Crie um projeto no seu github para este teste (lembre de deixar ele público) depois do processo de seleção pode ser removido sem problemas
 
 ## ⚙️ Criar um projeto utilizando Vue Cli com as seguintes configurações
 * Vue 2.x
@@ -36,4 +35,4 @@ Segue abaixo orientações para esta etapa do processo de seleção:
 * Indentação / Organização nos códigos e templates
 * README organizado e detalhado
 
-## 📨 Fazer um PR (Pull Request) com o código finalizado
+## 📨 Mande o link do projeto e aguarde retorno entraremos em contato com você 😉
